@@ -11,7 +11,7 @@ pipeline {
 
         stage('Check Environment') {
             steps {
-                bat 'python --version'
+                bat '"C:\\Users\\Sanjjey Arumugam\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" --version'
                 echo '✅ Python environment verified.'
             }
         }
@@ -20,14 +20,14 @@ pipeline {
         stage('Install Modules') {
             steps {
                 echo '📦 Installing Python dependencies...'
-                bat 'pip install -r requirement.txt'
+                bat '"C:\\Users\\Sanjjey Arumugam\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" install sqllite3 datetime'
             }
         }
 
         stage('Run Automated Tracker') {
             steps {
                 echo '🚀 Executing main.py...'
-                bat 'python main.py'
+                bat '"C:\\Users\\Sanjjey Arumugam\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" main.py'
             }
         }
     }
