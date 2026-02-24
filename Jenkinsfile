@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                // NOTE: This will only work if you configured Jenkins to use "Pipeline script from SCM"
                 checkout scm
                 echo '✅ Code checked out successfully.'
             }
@@ -11,22 +12,18 @@ pipeline {
 
         stage('Check Environment') {
             steps {
+                // Using your exact explicit path
                 bat '"C:\\Users\\Sanjjey Arumugam\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" --version'
                 echo '✅ Python environment verified.'
             }
         }
 
-        // 👇 THIS IS WHERE THE INSTALL STAGE GOES 👇
-        stage('Install Modules') {
-            steps {
-                echo '📦 Installing Python dependencies...'
-                bat '"C:\\Users\\Sanjjey Arumugam\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\pip" install sqlite3 datetime'
-            }
-        }
+        // ❌ The Install Modules stage has been removed because you don't need it! ❌
 
         stage('Run Automated Tracker') {
             steps {
                 echo '🚀 Executing main.py...'
+                // Using your exact explicit path
                 bat '"C:\\Users\\Sanjjey Arumugam\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" main.py'
             }
         }
