@@ -36,21 +36,21 @@ def process_batch_expenses():
     conn = sqlite3.connect("expenses.db")
     cursor = conn.cursor()
 
-    print("⚙️ Processing automated transactions...\n")
+    # Emojis removed to prevent Jenkins Unicode errors
+    print("Processing automated transactions...\n")
     
     for item in transactions:
         date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
-        # Inserting the hardcoded values into the database
         cursor.execute(
             "INSERT INTO expenses (date, category, amount, description) VALUES (?, ?, ?, ?)",
             (date, item["category"], item["amount"], item["description"])
         )
-        print(f"✅ Logged: {item['category']} - ${item['amount']:.2f}")
+        print(f"Logged: {item['category']} - ${item['amount']:.2f}")
 
     conn.commit()
     conn.close()
-    print("\n✅ Batch insertion complete!\n")
+    print("\nBatch insertion complete!\n")
 
 def view_expenses():
     """Fetches and displays all expenses from the database."""
@@ -74,10 +74,9 @@ def view_expenses():
 
 # --- Main Application Execution ---
 def main():
-    init_db()                   # Step 1: Prepare the database
-    process_batch_expenses()    # Step 2: Insert the hardcoded data
-    view_expenses()             # Step 3: Print the results
+    init_db()                   
+    process_batch_expenses()    
+    view_expenses()             
 
-# This ensures the script runs automatically when executed
 if __name__ == "__main__":
     main()
