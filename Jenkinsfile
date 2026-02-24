@@ -20,7 +20,7 @@ pipeline {
         stage('Install Modules') {
             steps {
                 echo '📦 Installing Python dependencies...'
-                bat '"C:\\Users\\Sanjjey Arumugam\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\pip" install sqllite3 datetime'
+                bat '"C:\\Users\\Sanjjey Arumugam\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\pip" install sqlite3 datetime'
             }
         }
 
